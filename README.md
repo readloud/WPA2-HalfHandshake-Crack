@@ -8,7 +8,21 @@ For more information on general wifi hacking, see [here](https://github.com/dxa4
 ```
   $ sudo python setup.py install
 ```
-
+or
+```
+pip install pypcapfile
+pip install pbkdf2_ctypes
+```
+## Parrot OS 
+*if getting trouble can't install the packages*
+```
+  $ sudo python setup.py install --break-system-packages
+```
+or
+```
+python -m pip install pypcapfile --break-system-packages
+python -m pip install pbkdf2_ctypes --break-system-packages
+```
 ## Sample use
 
 ```
