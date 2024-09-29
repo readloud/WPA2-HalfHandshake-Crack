@@ -44,7 +44,7 @@ def crack(ssid, clientMac, APMac, Anonce, Snonce, mic, data, passQueue):
         try:
             timeB = datetime.now()
             currentSize = passQueue.qsize()
-            print str(100 - 100.0 * currentSize / startSize) + "% done. " + str((startSize - currentSize) / (timeB - timeA).total_seconds()) + " hashes per second"
+            print(str(100 - 100.0 * currentSize / startSize) + "% done. " + str((startSize - currentSize) / (timeB - timeA).total_seconds()) + " hashes per second")
         except:
             pass
         if foundPassQ.empty():
@@ -57,4 +57,5 @@ def crack(ssid, clientMac, APMac, Anonce, Snonce, mic, data, passQueue):
             break
     pool.terminate()
     return returnVal
+
 
