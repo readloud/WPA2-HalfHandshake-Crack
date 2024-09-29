@@ -29,13 +29,13 @@ if __name__ == "__main__":
     try:                  
         opts, args = getopt.getopt(argv[1:], "r:m:s:d:")
     except getopt.GetoptError:          
-        print "bad args"
+        print("bad args")
         exit(2)
     for opt, arg in opts:
         if opt == '-r':
             readFile = arg
         if opt == '-m':
-            usersMac = arg.replace(":", "").decode('hex')
+            usersMac = arg.replace(":", "").encode()
         if opt == '-s':
             SSID = arg
         if opt == '-d':
@@ -46,9 +46,9 @@ if __name__ == "__main__":
                     passphraseQ.put(passphrase)
                 f.close()
             except IOError:
-                print "Error reading dictionary"
+                print("Error reading dictionary")
                 exit(2)
-    print "loading dictionary..."
+    print("loading dictionary...")
     try:
         passphraseQ
     except:
@@ -63,16 +63,16 @@ if __name__ == "__main__":
         SSID
         readFile
     except NameError:
-        print "missing args, requirs: -m (AP mac address) -s (SSID) -r (PCAP filename)"
+        print("missing args, requirs: -m (AP mac address) -s (SSID) -r (PCAP filename)")
         exit(2)
     try:
         caps, header = load_savefile(open(readFile))
     except IOError:
-        print "Error reading file"
+        print("Error reading file")
         exit(2)
 
     if header.ll_type != 1 and header.ll_type != 105:
-        print "unsupported linklayer type, only supports ethernet and 802.11"
+        print("unsupported linklayer type, only supports ethernet and 802.11")
         exit(2)
     clients = {}
     if header.ll_type == 105:
@@ -132,7 +132,8 @@ if __name__ == "__main__":
                         clients[info['client']] = [info]
     cracked = crackClients(clients, usersMac, SSID, passphraseQ)
     if cracked == False:
-        print "Unable to find passphrase"
+        print("Unable to find passphrase")
     else:
-        print "Passphrase found! " + cracked
+        print("Passphrase found! " + cracked)
+
 

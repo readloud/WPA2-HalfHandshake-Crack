@@ -8,3 +8,4 @@ setup(name='WPA2-HalfHandshake-Crack',
       author_email='dxa4481@rit.edu',
       license='MIT',
       install_requires=['pypcapfile', 'pbkdf2_ctypes'])
+

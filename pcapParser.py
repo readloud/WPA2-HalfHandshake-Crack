@@ -20,9 +20,9 @@ VERBOSE = False
 def __TRACE__(msg, args=None):
     if VERBOSE:
         if args:
-            print msg % args
+            print(msg % args)
         else:
-            print msg
+            print(msg)
 
 
 class pcap_savefile(object):
@@ -199,3 +199,4 @@ def _read_a_packet(file_h, hdrp, layers=0):
     packet = pcap_packet(hdrp, timestamp, timestamp_ms, capture_len,
                          packet_len, raw_packet)
     return (raw_packet_header, packet)
+
